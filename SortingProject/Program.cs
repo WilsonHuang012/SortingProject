@@ -24,8 +24,9 @@ namespace SortingProject
             }
 
             Console.WriteLine();
-            List<int> result = SortingAlgorithm.BubbleSort(list);
-
+            List<int> result = new List<int>();
+            //result = SortingAlgorithm.BubbleSort(list);
+            result = SortingAlgorithm.QuickSort(list, 0, list.Count - 1);
             Console.WriteLine("After Sort:");
             for (int i = 0; i < result.Count; i++)
             {

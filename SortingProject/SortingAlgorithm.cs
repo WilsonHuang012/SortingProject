@@ -12,6 +12,11 @@ namespace SortingProject
     /// </summary>
     public static class SortingAlgorithm
     {
+        /// <summary>
+        /// 氣泡排序
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static List<int> BubbleSort(List<int> list)
         {
             int temp = 0;
@@ -28,6 +33,47 @@ namespace SortingProject
                 }
             }
             return list;
+        }
+
+        /// <summary>
+        /// 快速排序
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
+        public static List<int> QuickSort(List<int> list, int left, int right)
+        {
+            if (left < right)
+            {
+                int p = Partition(list, left, right);
+                QuickSort(list, left, p - 1);
+                QuickSort(list, p + 1, right);
+            }
+            return list;
+        }
+
+        private static int Partition(List<int> list, int left, int pivotIndex)
+        {
+            int pivot = list[pivotIndex];
+            int i = left - 1;
+            for (int j = left; j < pivotIndex; j++)
+            {
+                if (list[j] < pivot)
+                {
+                    i += 1;
+                    Swap(list, i, j);
+                }
+            }
+            Swap(list, i + 1, pivotIndex);
+            return i + 1;
+        }
+
+        private static void Swap(List<int> list, int i, int j)
+        {
+            int temp = list[i];
+            list[i] = list[j];
+            list[j] = temp;
         }
     }
 }
