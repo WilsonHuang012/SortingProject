@@ -26,9 +26,7 @@ namespace SortingProject
                 {
                     if (list[j] > list[j + 1])
                     {
-                        temp = list[j];
-                        list[j] = list[j + 1];
-                        list[j + 1] = temp;
+                        Swap(list, j, j + 1);
                     }
                 }
             }
@@ -49,6 +47,37 @@ namespace SortingProject
                 int p = Partition(list, left, right);
                 QuickSort(list, left, p - 1);
                 QuickSort(list, p + 1, right);
+            }
+            return list;
+        }
+
+        public static List<int> SelectionSort(List<int> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                for (int j = i + 1; j < list.Count; j++)
+                {
+                    if (list[i] > list[j])
+                    {
+                        Swap(list, i, j);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public static List<int> InsertionSort(List<int> list)
+        {
+            for (int i = 1; i < list.Count; i++)
+            {
+                int temp = list[i];
+                int index = i;
+                while (index > 0 && list[index - 1] > temp)
+                {
+                    list[i - 1] = list[i];
+                    index -= 1;
+                }
+                list[index] = temp;
             }
             return list;
         }
